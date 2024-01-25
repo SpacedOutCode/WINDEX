@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WINDEXploit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  </head>
+  <body>
+    <h1 class="title">Welcome to the WINDEXploit Script Creator</h1>
+    <h3>
+      This page was made for easy creation of personalized flipper zero skiovox
+      exploit assisters. Please note all information here is local and cannot be
+      saved to my servers. I do not collect any personal information on this
+      page.
+    </h3>
+    <div class="options">
+      <div class="option">
+        <p>Select the year you graduate</p>
+        <select name="Year" id="year">
+          <option value=""></option>
+          <option value="0">24</option>
+          <option value="1">25</option>
+          <option value="2">26</option>
+          <option value="3">27</option>
+        </select>
+      </div>
+      <div class="option">
+        <p>
+          Last name first initial. <br />
+          Example: RotiL
+        </p>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="option">
+        <p>School google password</p>
+        <input type="text" name="pass" id="pass" />
+      </div>
+    </div>
+    <br />
+    <button onclick="downloadFile()" id="download">Download </button>
+    <script>
+      const downloadFile = () => {
+         const link = document.createElement("a");
+         const years = [
+            "24", "25", "26", "27"
+         ]
+         const year = years[document.getElementById("year").value];
+         const name = document.getElementById("email").value;
+         const pass = document.getElementById("pass").value;
+         const content = "ESCAPE\n\nDELAY 1250\n\nSTRING " + year + name  + "\n\nENTER\n\nDELAY 1250\n\nSTRING " + pass + "\n\nENTER\n\nDELAY 7000\n\nESCAPE"
+         const file = new Blob([content], { type: 'text/plain' });
+         link.href = URL.createObjectURL(file);
+         link.download = "exploit.txt";
+         link.click();
+         URL.revokeObjectURL(link.href);
+      };
+    </script>
+  </body>
+</html>
